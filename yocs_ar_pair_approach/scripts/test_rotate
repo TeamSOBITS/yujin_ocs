@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #       
 # License: BSD
 #   https://raw.github.com/yujinrobot/yujin_ocs/license/LICENSE

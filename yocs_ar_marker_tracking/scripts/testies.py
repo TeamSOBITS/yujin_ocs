@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #       
 # License: BSD
 #   https://raw.github.com/robotics-in-concert/rocon_multimaster/master/rocon_gateway/LICENSE 
@@ -52,10 +52,10 @@ class Jagi(object):
         try:
             a = math.sqrt(self.left_marker.distance*self.left_marker.distance - b*b)
         except ValueError:
-            print("Value error: measured_distance=%s, b=%s" % (self.left_marker.distance, b))
+            print ("Value error: measured_distance=%s, b=%s" % (self.left_marker.distance, b))
             return False # self.left_marker not initialised fully yet, so negative sqrt
-        print(console.cyan + "           a" + console.reset + " : " + console.yellow + "%s" % a + console.reset)
-        print(console.cyan + "           b" + console.reset + " : " + console.yellow + "%s" % b + console.reset)
+        print (console.cyan + "           a" + console.reset + " : " + console.yellow + "%s" % a + console.reset)
+        print (console.cyan + "           b" + console.reset + " : " + console.yellow + "%s" % b + console.reset)
         return True
 
     def print_pose_results(self):
@@ -69,9 +69,9 @@ class Jagi(object):
         theta = math.atan2((self.left_marker.z - self.right_marker.z), (self.right_marker.x - self.left_marker.x))
         theta_degrees = theta*180.0/math.pi
     
-        print(console.cyan + "       alpha" + console.reset + " : " + console.yellow + "%s" % alpha_degrees + " degrees" + console.reset)
-        print(console.cyan + "        beta" + console.reset + " : " + console.yellow + "%s" % beta_degrees + " degrees" + console.reset)
-        print(console.cyan + "       theta" + console.reset + " : " + console.yellow + "%s" % theta_degrees + " degrees" + console.reset)
+        print (console.cyan + "       alpha" + console.reset + " : " + console.yellow + "%s" % alpha_degrees + " degrees" + console.reset)
+        print (console.cyan + "        beta" + console.reset + " : " + console.yellow + "%s" % beta_degrees + " degrees" + console.reset)
+        print (console.cyan + "       theta" + console.reset + " : " + console.yellow + "%s" % theta_degrees + " degrees" + console.reset)
         
         # M1 = (self.left_marker.x, self.left_marker.z)
         # M2 = (self.right_marker.x, self.right_marker.z)
@@ -85,7 +85,7 @@ class Jagi(object):
         target_heading = math.atan2(target_x, target_z)
         target_heading_degrees = target_heading*180.0/math.pi
         
-        print(console.cyan + "      target" + console.reset + " : " + console.yellow + "(x=%s, z=%s, heading=%s)" % (target_x, target_z, target_heading_degrees) + console.reset)
+        print (console.cyan + "      target" + console.reset + " : " + console.yellow + "(x=%s, z=%s, heading=%s)" % (target_x, target_z, target_heading_degrees) + console.reset)
         self.x_publisher.publish(Float32(target_x))
         self.z_publisher.publish(Float32(target_z))
         self.heading_publisher.publish(Float32(target_heading_degrees))
@@ -94,13 +94,13 @@ class Jagi(object):
         if data.id == 0:
             self.right_marker.update(data.pose.position.x, data.pose.position.y, data.pose.position.z)
             self.right_last_timestamp = data.header.stamp
-            print(console.cyan + "r: [x, y, z]" + console.reset + " : " + console.yellow + "[%s, %s, %s]" % (self.right_marker.x, self.right_marker.y, self.right_marker.z) + console.reset)
-            print(console.cyan + "r: d" + console.reset + "         : " + console.yellow + "%s" % self.right_marker.distance + console.reset)
+            print (console.cyan + "r: [x, y, z]" + console.reset + " : " + console.yellow + "[%s, %s, %s]" % (self.right_marker.x, self.right_marker.y, self.right_marker.z) + console.reset)
+            print (console.cyan + "r: d" + console.reset + "         : " + console.yellow + "%s" % self.right_marker.distance + console.reset)
         else:
             self.left_last_timestamp = data.header.stamp
             self.left_marker.update(data.pose.position.x, data.pose.position.y, data.pose.position.z)
-            print(console.cyan + "l: [x, y, z]" + console.reset + " : " + console.yellow + "[%s, %s, %s]" % (self.left_marker.x, self.left_marker.y, self.left_marker.z) + console.reset)
-            print(console.cyan + "l: d" + console.reset + "         : " + console.yellow + "%s" % self.left_marker.distance + console.reset)
+            print (console.cyan + "l: [x, y, z]" + console.reset + " : " + console.yellow + "[%s, %s, %s]" % (self.left_marker.x, self.left_marker.y, self.left_marker.z) + console.reset)
+            print (console.cyan + "l: d" + console.reset + "         : " + console.yellow + "%s" % self.left_marker.distance + console.reset)
         #if math.fabs(self.left_last_timestamp - self.right_last_timestamp) < 0.1:
         if self.left_last_timestamp == self.right_last_timestamp:
             if self.print_pythags_results():
