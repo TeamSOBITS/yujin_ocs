@@ -31,7 +31,7 @@
   </node>
 
   <group unless="$(arg simulation)">
-    <include file="$(find yocs_localization_manager)/launch/includes/amcl.launch.xml">
+    <include file="$(find yocs_localization_manager)/launch/includes/amcl/amcl.launch.xml">
       <arg name="global_frame"          value="$(arg global_frame)"/>
       <arg name="base_frame"            value="$(arg base_frame)"/>
       <arg name="odom_frame"            value="$(arg odom_frame)"/>
