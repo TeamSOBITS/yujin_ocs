@@ -35,7 +35,7 @@ add_library(yocs_basic_move_controller
 )
 
 target_link_libraries(yocs_basic_move_controller ${catkin_LIBRARIES})
-add_dependencies(yocs_basic_move_controller yocs_msgs_gencpp geometry_msgs_gencpp nav_msgs_gencpp)
+# add_dependencies(yocs_basic_move_controller yocs_msgs_gencpp geometry_msgs_gencpp nav_msgs_gencpp)
 
 add_library(yocs_semantic_navigator
   src/lib/semantic_navigator.cpp
@@ -44,7 +44,7 @@ add_library(yocs_semantic_navigator
 )
 
 target_link_libraries(yocs_semantic_navigator ${catkin_LIBRARIES} yocs_basic_move_controller)
-add_dependencies(yocs_semantic_navigator yocs_msgs_gencpp move_base_msgs_gencpp yocs_basic_move_controller)
+# add_dependencies(yocs_semantic_navigator yocs_msgs_gencpp move_base_msgs_gencpp yocs_basic_move_controller)
 
 
 ## Declare a cpp executable

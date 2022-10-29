@@ -36,9 +36,9 @@ add_library(yocs_diff_drive_pose_controller_nodelet
     src/diff_drive_pose_controller.cpp
     src/diff_drive_pose_controller_ros.cpp
     src/nodelet.cpp)
-add_dependencies(yocs_diff_drive_pose_controller_nodelet geometry_msgs_gencpp
-                                                         sensor_msgs_gencpp
-                                                         std_msgs_gencpp)
+# add_dependencies(yocs_diff_drive_pose_controller_nodelet geometry_msgs_gencpp
+#                                                          sensor_msgs_gencpp
+#                                                          std_msgs_gencpp)
 target_link_libraries(yocs_diff_drive_pose_controller_nodelet yocs_diff_drive_pose_controller ${catkin_LIBRARIES})
 
 install(TARGETS yocs_diff_drive_pose_controller yocs_diff_drive_pose_controller_nodelet LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION})
